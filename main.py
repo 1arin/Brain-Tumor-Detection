@@ -11,8 +11,8 @@ app = Flask(__name__)
 model = load_model('model.h5')
 
 # Class labels
-class_labels = ['pituitary', 'glioma', 'notumor', 'meningioma']
-
+class_labels = ['Pituitary', 'Glioma', 'Notumor', 'Meningioma']
+ 
 # Define the uploads folder
 UPLOAD_FOLDER = './uploads'
 if not os.path.exists(UPLOAD_FOLDER):
