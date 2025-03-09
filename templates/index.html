@@ -8,34 +8,96 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
+            background-color: #121212; /* Dark background */
+            color: #fff; /* White text color */
+            padding-bottom: 20px; /* Add padding at the bottom */
         }
 
         .container {
-            max-width: 600px; /* Set a max width for the container */
+            max-width: 700px; /* Increased width for a more spacious layout */
             margin: 0 auto;   /* Center the container horizontally */
         }
 
         .card {
             border-radius: 15px;
+            background-color: #1d1d1d; /* Dark background for the card */
+            color: #fff; /* White text color in card */
+            border: 1px solid #444; /* Soft border for the card */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Soft shadow */
         }
 
-        #results img {
-            max-height: 400px;
-            margin-top: 15px;
+        .card-body {
+            padding: 25px;
         }
 
-        .text-center {
-            text-align: center;
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .lead {
+            margin-bottom: 40px; /* Increased margin */
         }
 
         .btn {
             width: 100%;
+            padding: 12px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            background-color: #007bff;
+            border: none;
         }
 
-        .lead {
-            margin-bottom: 30px; /* Space between the heading and the form */
+        .btn:hover {
+            background-color: #0056b3; /* Darker blue on hover */
         }
+
+        .btn:active {
+            background-color: #004085; /* Dark blue when clicked */
+        }
+
+        .result-card {
+            background-color: #2c2c2c;
+            border: 1px solid #555;
+        }
+
+        .result-title {
+            color: #00ff00; /* Green text for result title */
+        }
+
+        .confidence {
+            color: #ffcc00; /* Yellow color for confidence */
+        }
+
+        .text-center h1 {
+            font-size: 3rem;
+            color: #00bfff; /* Sky blue for the main heading */
+        }
+
+        .text-center p {
+            font-size: 1.2rem;
+            color: #b0b0b0; /* Light gray for subheading */
+        }
+
+        #results img {
+        max-height: 400px;
+        max-width: 100%; /* ให้ภาพขยายตามขนาดกรอบได้ */
+        margin-top: 15px;
+        border-radius: 12px; /* มุมโค้งของภาพ */
+            object-fit: contain; /* ทำให้ภาพพอดีกับกรอบ */
+            .file-upload-btn {
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+        }
+
+        .file-upload-btn:hover {
+            background-color: #0056b3;
+        }
+
     </style>
 </head>
 
@@ -53,17 +115,17 @@
                     <label for="file" class="form-label">Select MRI Image:</label>
                     <input type="file" class="form-control" id="file" name="file" accept="image/*" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Upload and Detect</button>
+                <button type="submit" class="btn file-upload-btn">Upload and Detect</button>
             </form>
         </div>
 
         {% if result %}
         <!-- Display Results -->
         <div id="results" class="mt-4">
-            <div class="card shadow">
+            <div class="card shadow result-card">
                 <div class="card-body">
-                    <h4 class="card-title text-success">{{ result }}</h4>
-                    <p class="card-text text-muted">Confidence: {{ confidence }}%</p>
+                    <h4 class="card-title result-title">{{ result }}</h4>
+                    <p class="card-text confidence">Confidence: {{ confidence }}</p>
                     <img src="{{ file_path }}" class="img-fluid rounded" alt="Uploaded Image">
                 </div>
             </div>
